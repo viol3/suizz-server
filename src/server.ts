@@ -511,7 +511,7 @@ function handleDisconnect(ws: WebSocket)
     if (room.host.ws === ws)
     {
       room.broadcastHostExit();
-      delete rooms[code];
+      delete rooms[room.code];
       console.log(`❌ Host ${room.host.id} disconnected, room ${code} closed`);
       return;
     }
@@ -532,7 +532,8 @@ setInterval(() =>
 {
   for (const [code, room] of Object.entries(rooms))
   {
-    if (room.finished) {
+    if (room.finished)
+    {
       delete rooms[code];
       console.log(`🗑️ Room ${code} removed (finished).`);
     }
