@@ -512,7 +512,7 @@ function handleDisconnect(ws: WebSocket)
     {
       room.broadcastHostExit();
       delete rooms[room.code];
-      console.log(`❌ Host ${room.host.id} disconnected, room ${code} closed`);
+      console.log(`❌ Host ${room.host.id} disconnected, room ${room.code} closed`);
       return;
     }
     const user = room.users.find(u => u.ws === ws);
