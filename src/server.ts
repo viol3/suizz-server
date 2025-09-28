@@ -1,4 +1,4 @@
-import http from "http";
+import https from "https";
 import { WebSocketServer, WebSocket } from "ws";
 import { Room, UserData } from "./Room";
 import { EnokiClient } from "@mysten/enoki";
@@ -220,9 +220,9 @@ const questions: Question[] = [
   },
 ];
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
-  res.end("WebSocket server is running\n");
+const server = https.createServer({
+  cert: fs.readFileSync("/etc/letsencrypt/live/suizz.fluton.io/fullchain.pem"),
+  key: fs.readFileSync("/etc/letsencrypt/live/suizz.fluton.io/privkey.pem")
 });
 
 const wss = new WebSocketServer({ server });
