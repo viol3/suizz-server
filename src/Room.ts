@@ -214,6 +214,12 @@ export class Room
       ranking.push(this.eliminatedOtherUsers[this.eliminatedOtherUsers.length - 2]);
       ranking.push(this.eliminatedOtherUsers[this.eliminatedOtherUsers.length - 1]);
     }
+    else if (this.eliminatedOtherUsers.length >= 3)
+    {
+      // 3 veya daha fazla kişi elenmişse → sadece elenenlerden top3
+      const sorted = [...this.eliminatedOtherUsers].sort((a, b) => b.score - a.score);
+      ranking = sorted.slice(0, 3);
+    }
 
     const data = JSON.stringify(
       {
