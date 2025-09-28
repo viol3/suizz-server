@@ -356,8 +356,8 @@ function handleCreateBotRoomRequest(ws: WebSocket, ownerId: string)
 function handleCreateRoomRequest(ws: WebSocket, ownerId: string)
 {
   const user: UserData = { id: ownerId, name: ownerId, score: 5, selectedOption: -1, ws };
-  //const roomCode = generateRoomCode();
-  const roomCode = "AAA";
+  const roomCode = generateRoomCode();
+  //const roomCode = "AAA";
 
   const shuffled = [...questions].sort(() => 0.5 - Math.random());
   const selectedQuestions = shuffled.slice(0, 10);
